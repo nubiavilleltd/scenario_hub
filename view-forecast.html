@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Setup Forecast</title>
+  </head>
+  <body class="main2">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg bg-transparent">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">SCENARIO</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarContent"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+              <li class="nav-item mx-2">
+                <a class="nav-link" href="./index.html">Home</a>
+              </li>
+              <li class="nav-item dropdown mx-2">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  >Scenario</a
+                >
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="./create.html"
+                      >Create Scenario</a
+                    >
+                  </li>
+                  <div class="dropdown-line"></div>
+                  <li>
+                    <a class="dropdown-item" href="./view.html"
+                      >View Scenario</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-item mx-2">
+                <a class="nav-link" href="./view-forecast.html"
+                  >View Forecast Data</a
+                >
+              </li>
+
+              <!-- Setup Dropdown -->
+              <li class="nav-item dropdown mx-2">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  >Setup</a
+                >
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="./view-parameter.html"
+                      >Switching Parameter</a
+                    >
+                  </li>
+                  <div class="dropdown-line"></div>
+                  <li>
+                    <a class="dropdown-item" href="./view-rate.html"
+                      >Increase/Decrease Rate</a
+                    >
+                  </li>
+                  <div class="dropdown-line"></div>
+                  <li>
+                    <a class="dropdown-item" href="./forecast.html"
+                      >Setup Forecast</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown mx-2">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  ><img
+                    src="./images/profile.png"
+                    alt="Profile"
+                    class="rounded-circle"
+                    width="35"
+                    height="35"
+                /></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="#">Log-Out</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Main Body Here -->
+      <div class="relative_wrapper">
+        <div class="container create_scenario_container">
+          <div class="header_title">
+            <div class="create_title">SOP Data for Jan 2025</div>
+            <div
+              class="date_wrapper d-flex justify-content-between align-items-center"
+            >
+              <div id="scroll-left" class="chevron_wrapper">
+                <i class="fa-solid fa-chevron-left"></i>
+              </div>
+              <div class="date_scroll" id="scroll-container">
+                <span>Jan 2024</span>
+              </div>
+              <div id="scroll-right" class="chevron_wrapper">
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive mt-4">
+            <table
+              id="forecast"
+              class="table custom-scenario-table"
+              data-toggle="table"
+              data-search="true"
+              data-pagination="true"
+              data-page-size="10"
+            >
+              <thead>
+                <tr>
+                  <th>SKU</th>
+                  <th>Jan 2024</th>
+                  <th>Feb 2024</th>
+                  <th>Mar 2024</th>
+                  <th>Apr 2024</th>
+                  <th>May 2024</th>
+                  <th>Jun 2024</th>
+                  <th>Jul 2024</th>
+                  <th>Aug 2024</th>
+                  <th>Sep 2024</th>
+                  <th>Oct 2024</th>
+                  <th>Nov 2024</th>
+                  <th>Dec 2024</th>
+                  <th>Jan 2025</th>
+                  <th>Feb 2025</th>
+                  <th>Mar 2025</th>
+                  <th>Apr 2025</th>
+                  <th>May 2025</th>
+                  <th>Jun 2025</th>
+                  <th>Jul 2025</th>
+                  <th>Aug 2025</th>
+                  <th>Sep 2025</th>
+                  <th>Oct 2025</th>
+                  <th>Nov 2025</th>
+                  <th>Dec 2025</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>B&H</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>B&H Demi</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>8258.213542</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>100</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="login-footer">2025 All Rights Reserved</div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- jQuery + DataTables JS -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.22.2/dist/extensions/cell-edit/bootstrap-table-cell-edit.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.21.4/dist/extensions/export/bootstrap-table-export.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/TableExport/5.2.0/js/tableexport.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
+<script>
+  window.myTableId = "forecast";
+</script>
+<script src="./table_script.js"></script>
